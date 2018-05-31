@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="content">
+                <div class="app-title">
+                    <div>
+                        <h3>Registro del proyecto</h3>
+                        <p style="color: #009688">Ingrese los datos de registro de proyecto </p>
+                        <ul class="app-breadcrumb breadcrumb" style="text-align: right; ">
+                            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                            <li class="breadcrumb-item">Registro del proyecto</li>
+                        </ul>
+                    </div>                    
+                </div>
+                <f:view>
+
+
+                    <h:form enctype="multipart/form-data">
+                        <div class="col-md-12 col-sm-6 col-lg-6 sbForm">
+                            <div class="col-md-12 est-intput">
+                                <label for="visitaNumero *">Visita Numero: *</label><br></br>
+                                <p:inputText id="numeroVisita" class="form-control" value="#{visitaControlador.visita.visitaNumero}" title="Visita" required="true" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="fecha">Fecha de la visita *</label><br></br>
+                                <p:calendar id="fechaVisita" value="#{visitaControlador.visita.fecha}" title="FechaVisita" required="true" requiredMessage=" Ingrese la fecha de Visita" /><br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="itemUno">Motivo *</label><br></br>
+                                <p:inputText id="itemUno" class="form-control" value="#{visitaControlador.visita.itemUno}" title="ItemUno" required="true" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="itemDos">Motivo *</label><br></br>
+                                <p:inputText id="itemDos" class="form-control" value="#{visitaControlador.visita.itemDos}" title="ItemDos" required="true" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-6 col-lg-6 sbForm">
+                            <div class="col-md-12 est-intput">
+                                <label for="itemTres">Motivo *</label><br></br>
+                                <p:inputText id="itemTres" class="form-control" value="#{visitaControlador.visita.itemTres}" title="ItemTres" required="true" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="itemCuatro">Motivo *</label><br></br>
+                                <p:inputText id="itemCuatro" class="form-control" value="#{visitaControlador.visita.itemCuatro}" title="ItemCuatro" required="true"/>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="fkProyecto">Tipo de Documento : *</label>
+                                <h:selectOneMenu id="fkProyecto" class="form-control" value="#{visitaControlador.proyectos.idProyecto}">
+                                    <f:selectItem itemValue="" itemLabel="Seleccion"/>
+                                    <f:selectItems value="#{proyectosControlador.listarProyecto()}" var="proyec" itemValue="#{proyec.idProyecto}" itemLabel="#{proyec.codProyecto} #{proyec.nombreProyecto}"/><br></br>
+s                                </h:selectOneMenu><br></br>
+                            </div>
+                            <h:commandButton id="btnRegistrarProyecto" class="est-btn-success" value="Registrar información" action="#{visitaControlador.registrarVisita()}" style=" width: 200px; height: 40px;"></h:commandButton>
+                        </div>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

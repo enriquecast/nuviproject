@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+
+            <ui:define name="content">
+
+                <f:view>
+
+
+                    <h:form>
+                        <h2><h:outputText value="Cierre de Proyecto" style="font-size: 50px;"/></h2>
+                        <br></br>
+                        <p:outputLabel value="Codigo del Proyecto:" for="codProyecto"  style="font-size: 25px; margin-left: 400px;"/>
+                        <h:outputText id="codProyecto" value="#{proyectosControlador.proyectos.codProyecto}" title="CodProyecto" style="font-size: 20px; " />
+                        <br></br>                        
+                        <br></br>  
+
+                        <p:panelGrid columns="2" style="margin: auto;">
+
+
+                            <p:outputLabel value="NombreProyecto:" for="nombreProyecto" />
+                            <h:outputText id="nombreProyecto" value="#{proyectosControlador.proyectos.nombreProyecto}" title="NombreProyecto" />
+                            <p:outputLabel value="FechaInicioProyecto:" for="fechaInicioProyecto" />
+
+
+                            <h:outputText id="fechaInicioProyecto" value="#{proyectosControlador.proyectos.fechaInicioProyecto}" title="FechaInicioProyecto" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+
+                            <p:outputLabel value="FechaFinProyecto:" for="fechaFinProyecto" />
+                            <h:outputText id="fechaFinProyecto" value="#{proyectosControlador.proyectos.fechaFinProyecto}" title="FechaFinProyecto" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+
+
+
+                            <p:outputLabel value="CostoMaterial:" for="costoMaterial" />
+                            <h:outputText id="costoMaterial" value="#{proyectosControlador.proyectos.costoMaterial}" title="CostoMaterial" />
+                            <p:outputLabel value="CostoPersonal:" for="costoPersonal" />
+                            <h:outputText id="costoPersonal" value="#{proyectosControlador.proyectos.costoPersonal}" title="CostoPersonal" />
+                            <p:outputLabel value="CostoProyecto:" for="costoProyecto" />
+                            <h:outputText id="costoProyecto" value="#{proyectosControlador.proyectos.costoProyecto}" title="CostoProyecto" />
+                            <p:outputLabel value="CantidadVoluntarios:" for="cantidadVoluntarios" />
+                            <h:outputText id="cantidadVoluntarios" value="#{proyectosControlador.proyectos.cantidadVoluntarios}" title="CantidadVoluntarios" />
+                            <p:outputLabel value="DineroRecaudado:" for="dineroRecaudado" />
+                            <h:outputText id="dineroRecaudado" value="#{proyectosControlador.proyectos.dineroRecaudado}" title="DineroRecaudado" />
+                            <p:outputLabel value="SolucionProyecto:" for="solucionProyecto" />
+                            <h:outputText id="solucionProyecto" value="#{proyectosControlador.proyectos.solucionProyecto}" title="SolucionProyecto" />
+                            <p:outputLabel value="EstadoProyecto:" for="estadoProyecto" />
+                            <h:outputText id="estadoProyecto" value="#{proyectosControlador.proyectos.estadoProyecto}" title="EstadoProyecto" />
+
+                            <p:outputLabel value="fkFamilia:" for="fkFamilia" />
+                            <h:outputText id="fkFamilia" value="#{proyectosControlador.familias.idFamilia}" title="nomFamilia" />
+
+
+
+                        </p:panelGrid>
+                    
+
+
+
+                    <h2><h:outputText value="Archivos Adjuntos"/></h2>
+
+
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+
+                    <h2><h:outputText value="Reportes"/></h2>
+                    <br></br>
+                    <br></br>
+                    <!--<a href="../ReportePDF/Familiaproblematica.jasper" style="margin-left: 465px">Problematica de Familia</a>-->
+                    <br></br>
+                    <br></br>
+                    <br></br>
+
+                    <h:commandButton value="Cerrar Proyecto" action="#{proyectosControlador.cierre()}" class="btn-success" style="padding: 15px; border-radius: 15px; width: 200px; margin-left: 450px; margin-top:0px"></h:commandButton>
+
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    </h:form>
+                </f:view>
+                <br></br>
+                <br></br>
+                
+                
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

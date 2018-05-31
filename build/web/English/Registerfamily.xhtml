@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+            
+            <ui:define name="top">
+
+                <style>
+                    html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+                </style> 
+
+                <div id="throbber" style="display:none; min-height:120px;"></div>
+                <div id="noty-holder"></div>
+                <div id="wrapper">
+                    <!-- Navigation -->
+                    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="vav_color">
+
+                        <!-- Brand and toggle get grouped for better mobile display -->
+
+                        <div class="navbar-header">
+                            <button id="bgcl" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                            <a class="navbar-brand" >
+                                <img id="img1" src="../resources/imagenes/Logotipo_Nuvi_Amarillo.png" alt="Logo"/>               
+                            </a>
+
+                            <ul id="alt0"  class="nav navbar-right top-nav">
+                                <li id="alt1">
+                                    <img id="img2" src="../resources/imagenes/AVATAR1.png" alt="user"/>
+                                </li>            
+                                <li class="dropdown">
+                                    <a id="alto" href="#" class="dropdown-toggle" data-toggle="dropdown"> #{usuariosControlador.usuarios.nombreUsuario} <b class="fa fa-angle-down"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a id="anli1" href="../Pruebas/PruebaCorreo.xhtml"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+                                        <li><a id="anli2" href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
+                                        <li class="divider"></li>
+                                        <h:form>
+                                            <li><h:commandLink actionListener="#{usuariosControlador.cerrarSesion()}" action="/Login.xhtml?faces-redirect=true" style="margin-left: 10px"><i class="fa fa-fw fa-power-off"></i> Logout</h:commandLink></li>
+                                        </h:form>
+                                    </ul>
+                                </li>
+                            </ul>   
+                        </div>
+                        <!-- Top Menu Items -->
+
+                        <!-- ******Aca esta el menu, lo pueden organizar como quieran, reorganizarlo añadirle, quitarle**** -->
+                        <!-- ******Todos los iconos son de fontawesome fontawesome, solo es colocar el fa-loquesea que necesiten y listo*** -->
+
+                        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul id="as_color" class="nav navbar-nav side-nav" >
+                            <li>
+                                <a id="submen" href="#" data-toggle="collapse" data-target="#submenu-1" style="color: #ffffff"><i class="fa fa-fw fa-home"></i> Gestión de voluntarios <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                                <ul id="submenu-1" class="collapse">
+                                    <li><a href=""><h:form><h:commandLink style="color: white" value="Register Family" action="/English/Registerfamily.xhtml"></h:commandLink></h:form></a></li>
+                                    <li><a href=""><h:form><h:commandLink style="color: white" value="Lista Volutarios" action="/English/FamilyList.xhtml"></h:commandLink></h:form></a></li>
+                                    <li><a href=""><h:form><h:commandLink style="color: white" value="Lista Volutarios" action="/English/UpdateFamily.xhtml"></h:commandLink></h:form></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                        <!-- /.navbar-collapse -->
+                    </nav>
+
+
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <p:growl id="growl" showDetail="true"/>
+                        <div class="row">
+                            <h2><h:outputText value="Family Registration" style="color: #FCD11F; font-family: 'Patrick Hand'"/></h2>
+                            <p:outputLabel style="padding-left: 15px" value="The information related to continuation will be of the family benefits only with the data of the person head of family"></p:outputLabel><br></br>
+                            <p:outputLabel value="* Obligatory fields" style="padding-left: 15px" ></p:outputLabel><br></br>
+                            <div class="col-md-12 col-sm-6 col-lg-6 sbForm">
+                                <p:outputLabel value="Visit date:" for="fechaVisita" class="estLabel" /><br></br>
+                                <p:calendar id="fechaVisita" class="estInput" value="#{crudFamiliasControlador.familia.fechaVisita}" title="FechaVisita" pattern="MM-dd-yyyy" mask="true" required="true" requiredMessage="Date Required" /><br></br>
+                                <p:outputLabel value="First name:" class="estLabel" for="nombreCdeFamilia" /><br></br>
+                                <p:inputText  id="nombreCdeFamilia" class="estInput" value="#{crudFamiliasControlador.familia.nombreCdeFamilia}" title="NombreCdeFamilia" maxlength="12"  required="true" requiredMessage=" Required field name" onkeypress="return sololetras(event)"  /><br></br>
+                                <p:outputLabel value="First Surname:" class="estLabel" for="apellidoCdeFamilia" /><br></br>
+                                <p:inputText id="apellidoCdeFamilia" class="estInput" value="#{crudFamiliasControlador.familia.apellidoCdeFamilia}" title="ApellidoCdeFamilia" maxlength="15" onkeypress="return sololetras(event)" required="true" requiredMessage=" I name (s) needed field." /><br></br>
+                                <p:outputLabel value="Document type:" class="estLabel" for="fkTipoDocum" /><br></br>
+                                <p:selectOneMenu id="fkTipoDocum" class="estInput" value="#{crudFamiliasControlador.tipoDocumentos.idTipoDocum}">
+                                    <f:selectItem itemValue="" itemLabel="Seleccion"/>
+                                    <f:selectItems value="#{crudTipoDocumentoControlador.listarTipoDocumentos()}" var="docFmla" itemValue="#{docFmla.idTipoDocum}" itemLabel="#{docFmla.tipoDocum}"/> 
+                                    <f:selectItems value="#{fixme}"/>
+                                </p:selectOneMenu><br></br>
+                                <p:outputLabel value="Document:" class="estLabel" for="documCdeFamilia" /><br></br>
+                                <p:inputText id="documCdeFamilia" class="estInput" value="#{crudFamiliasControlador.familia.documCdeFamilia}" title="NDocumentoCdeFamilia"  required="True" requiredMessage="Numero de Documento requerido" maxlength="12" onkeypress="return solonumeros(event)"/><br></br>
+                                
+                            </div>
+                            <div class="col-md-12 col-sm-6 col-lg-6 sbForm">
+                                <p:outputLabel value="Number of family members:" class="estLabel" for="integrantesFamilia" /><br></br>
+                                <p:inputText id="integrantesFamilia" class="estInput" value="#{crudFamiliasControlador.familia.integrantesFamilia}" title="NIntegrantesFamilia" maxlength="2" onkeypress="return solonumeros(event)" required="true" requiredMessage="Ingrese cantidad de familiares" /><br></br>
+                                <p:outputLabel value="Family District:" for="barrioFamilia" class="estLabel"/><br></br>
+                                <p:inputText id="barrioFamilia" class="estInput" value="#{crudFamiliasControlador.familia.barrioFamilia}" title="BarrioFamilia" maxlength="25" onkeypress="return sololetras(event)" required="true" requiredMessage="Ingrese el barrio"/><br></br>
+                                <p:outputLabel value="Direction :" for="direccionFamilia" class="estLabel"/><br></br>
+                                <p:inputText id="direccionFamilia" class="estInput" value="#{crudFamiliasControlador.familia.direccionFamilia}" title="DireccionFamilia" required="true" requiredMessage="Ingrese una direccion" /><br></br>
+                                <p:outputLabel value="City:"  for="ciudadFamilia" class="estLabel"/><br></br>
+                                <p:inputText id="ciudadFamilia" class="estInput" value="#{crudFamiliasControlador.familia.ciudadFamilia}" title="CiudadFamilia"  required="true" requiredMessage="Ingrese la ciudad en la que habita" onkeypress="return sololetras(event)"/><br></br>
+                                <p:outputLabel value="Type of problem:" for="fkTipoProblematica" class="estLabel"/><br></br>
+                                    <p:selectOneMenu id="fkTipoProblematica" class="estInput" value="#{crudFamiliasControlador.problematicas.idProblematica}" ><br></br>
+                                    <f:selectItem itemValue="" itemLabel="selection"/>
+                                    <f:selectItems  var="Problematica" itemValue="Problemtica" itemLabel="Problematica"/> 
+                                    <f:selectItem itemLabel="family" itemValue="family"/>
+                                    <f:selectItem itemLabel="structural" itemValue="structural"/>
+                                    <f:selectItem itemLabel="healthiness" itemValue="healthiness"/>
+                                    <f:selectItems value="#{fixme}"/>
+                                </p:selectOneMenu><br></br>
+                            </div>
+                        </div>
+                        <h:commandButton id="btnRegistrarDonacion" value="Register information" action="#{crudFamiliasControlador.registerfamily()}" class="btn-success" style="padding: 15px; border-radius: 15px; width: 200px; margin-left: 300px; margin-top:0px"></h:commandButton>
+
+                    </h:form>
+
+                </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

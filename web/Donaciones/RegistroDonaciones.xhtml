@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Registro de donación"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="NombreDonador:" for="nombreDonador" />
+                            <p:inputText id="nombreDonador" value="#{donacionControlador.donador.nombreDonador}" title="NombreDonador" />
+                            <p:outputLabel value="DocuDonador:" for="docuDonador" />
+                            <p:inputText id="docuDonador" value="#{donacionControlador.donador.docuDonador}" title="DocuDonador" />
+                            <p:outputLabel value="FechaIngreso:" for="fechaIngreso" />
+                            <p:inputText id="fechaIngreso" value="#{donacionControlador.donador.fechaIngreso}" title="FechaIngreso" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:inputText>
+                            <p:outputLabel value="ContacDonador:" for="contacDonador" />
+                            <p:inputText id="contacDonador" value="#{donacionControlador.donador.contacDonador}" title="ContacDonador" />
+                            <p:outputLabel value="EmailDonador:" for="emailDonador" />
+                            <p:inputText id="emailDonador" value="#{donacionControlador.donador.emailDonador}" title="EmailDonador" />
+                            <p:outputLabel value="DireccionResidencia:" for="direccionResidencia" />
+                            <p:inputText id="direccionResidencia" value="#{donacionControlador.donador.direccionResidencia}" title="DireccionResidencia" />
+                            <p:outputLabel value="CiudadResidencia:" for="ciudadResidencia" />
+                            <p:inputText id="ciudadResidencia" value="#{donacionControlador.donador.ciudadResidencia}" title="CiudadResidencia" />
+                            <p:outputLabel value="FkTipoDocum:" for="fkTipoDocum" />
+                            <p:selectOneMenu id="fkTipoDocum" value="#{donacionControlador.donador.fkTipoDocum}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                    
+                        
+                    
+                        
+                        
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="ValorDonacion:" for="valorDonacion" />
+                            <p:inputText id="valorDonacion" value="#{donadorControlador.donaciones.valorDonacion}" title="ValorDonacion" />
+                            <p:outputLabel value="FechaDonacion:" for="fechaDonacion" />
+                            <p:inputText id="fechaDonacion" value="#{donadorControlador.donaciones.fechaDonacion}" title="FechaDonacion" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:inputText>
+                            <p:outputLabel value="ImgComporbante:" for="imgComporbante" />
+                            <p:inputText id="imgComporbante" value="#{donadorControlador.donaciones.imgComporbante}" title="ImgComporbante" />
+                            <p:outputLabel value="FkProyecto:" for="fkProyecto" />
+                            <p:selectOneMenu id="fkProyecto" value="#{donadorControlador.donaciones.fkProyecto}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="FkDonador:" for="fkDonador" />
+                            <p:selectOneMenu id="fkDonador" value="#{donadorControlador.donaciones.fkDonador}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                        <h:commandButton value="Registrar" action="#{donacionControlador.registrarDonacion()}"></h:commandButton>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

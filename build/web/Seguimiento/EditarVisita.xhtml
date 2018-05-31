@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="content">
+                <div>
+                    <h3>Resultado de la visita</h3>
+                    <p style="color: #009688">Diligencie los campos</p>
+                    <ul class="app-breadcrumb breadcrumb" style="text-align: right;">
+                        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                        <li class="breadcrumb-item">Lista de visitas agendadas</li>
+                        <li class="breadcrumb-item">Resultado de la visita</li>
+                    </ul>
+                </div> 
+                <f:view>
+                    <h:form>
+                        <div class="col-md-12 est-intput">
+                            <label for="visitaNumero">Visita de Número:</label><br></br>
+                            <p:inputText id="visitaNumero" value="#{visitaControlador.visita.visitaNumero}" title="VisitaNumero" />
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <label for="itemUno"></label><br></br>
+                            <h:outputText id="itemUno" value="#{visitaControlador.visita.itemUno}" title="ItemUno" />
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <label for="detalleUno">Resultado : </label><br></br>
+                            <p:inputText id="detalleUno" value="#{visitaControlador.visita.detalleUno}" title="DetalleUno" />
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <label for="itemDos"></label><br></br>
+                            <h:outputText id="itemDos" value="#{visitaControlador.visita.itemDos}" title="ItemDos" />
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <label for="itemDos"> Resultado : </label><br></br>
+                            <p:inputText id="detalleDos" value="#{visitaControlador.visita.detalleDos}" title="DetalleDos" />
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <label for="itemTres"></label><br></br>
+                            <h:outputText id="itemTres" value="#{visitaControlador.visita.itemTres}" title="ItemTres" />
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <label for="detalleTres"> Resultado : </label><br></br>
+                            <p:inputText id="detalleTres" value="#{visitaControlador.visita.detalleTres}" title="DetalleTres" />
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <label for="itemCuatro"></label><br></br>
+                            <h:outputText id="itemCuatro" value="#{visitaControlador.visita.itemCuatro}" title="ItemCuatro" />
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <label for="detalleCuatro">Resultado :</label><br></br>
+                            <p:inputText id="detalleCuatro" value="#{visitaControlador.visita.detalleCuatro}" title="DetalleCuatro" />
+                        </div>
+                        <h:commandButton id="btnRegistrarProyecto" class="est-btn-success" value="Registrar información" action="#{visitaControlador.actualizarVisita()}" style=" width: 200px; height: 40px;"></h:commandButton>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+            <ui:define name="content">
+                 <f:view>
+                        <h:form>
+                            <p:growl autoUpdate="true"/>
+                            <p:messages id="messages" showDetail="true" closable="true">
+                            </p:messages>
+                            
+                            <h1><h:outputText value="Register Project"/></h1>
+                            <p:outputLabel value="The fields that contain the * are mandatory"></p:outputLabel>
+                            <p:panelGrid columns="2">
+                              
+                                    
+                                <p:outputLabel value="Project name:" for="nombreProyecto" />
+                                <p:inputText id="nombreProyecto" value="#{crudProyectosControlador.proyectos.nombreProyecto}" title="NombreProyecto" required="true" requiredMessage=" Enter the name of the Project." />
+                                <p:outputLabel value="Project Start Date:" for="fechaInicioProyecto" />
+                                <p:calendar id="fechaInicioProyecto" value="#{crudProyectosControlador.proyectos.fechaInicioProyecto}" effect="fold"  required="true" requiredMessage=" Enter the initial date of the project."/>
+                                
+                      
+                                <p:outputLabel value="Project End Date:" for="fechaFinProyecto" />
+                                <p:calendar id="fechaFinProyecto" value="#{crudProyectosControlador.proyectos.fechaFinProyecto}" effect="fold" required="true" requiredMessage=" Enter the final date of the project" /> 
+                                    
+                              
+                                
+                                <p:outputLabel value="Project solution:" for="solucionProyecto" />
+                                <p:inputTextarea id="solucionProyecto" value="#{crudProyectosControlador.proyectos.solucionProyecto}" title="SolucionProyecto" required="true" requiredMessage=" Enter the project solution" />
+                                <p:outputLabel value="Assigned Family:" for="fkFamilia" />
+                                <p:selectOneMenu id="fkFamilia" value="#{crudProyectosControlador.familia.idFamilia}" >
+                                    <f:selectItem  itemLabel="Family"/>
+                                    <f:selectItems value="#{crudFamiliasControlador.listarFamilias()}" var="familia" itemValue="#{familia.idFamilia}" itemLabel="#{familia.nombreCdeFamilia}"/>
+                                    <f:selectItems value="#{fixme}"/>
+                                </p:selectOneMenu>
+                                
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <p:commandButton id="RegistrarProy" value="Register Project" title="RegistrarProy" action="#{crudProyectosControlador.registrarProyecto()}"/>
+                                
+                            </p:panelGrid>
+                         
+                            <a href="Project list.xhtml">List of Projects </a>
+                        </h:form>
+                    </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

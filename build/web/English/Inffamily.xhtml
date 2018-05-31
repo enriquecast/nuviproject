@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="IdFamilia:" for="idFamilia" />
+                            <h:outputText id="idFamilia" value="#{crudFamiliasControlador.familia.idFamilia}" title="IdFamilia"/>
+                            <p:outputLabel value="Name:" for="nombreCdeFamilia" />
+                            <h:outputText id="nombreCdeFamilia" value="#{crudFamiliasControlador.familia.nombreCdeFamilia}" title="NombreCdeFamilia" />
+                            <p:outputLabel value="First Surname:" for="apellidoCdeFamilia" />
+                            <h:outputText id="apellidoCdeFamilia" value="#{crudFamiliasControlador.familia.apellidoCdeFamilia}" title="ApellidoCdeFamilia" />
+                            <p:outputLabel value="Visit date:" for="fechaVisita" />
+                            <h:outputText id="fechaVisita" value="#{crudFamiliasControlador.familia.fechaVisita}" title="FechaVisita" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                            <p:outputLabel value="Document:" for="documCdeFamilia" />
+                            <h:outputText id="documCdeFamilia" value="#{crudFamiliasControlador.familia.documCdeFamilia}" title="DocumCdeFamilia" />
+                            <p:outputLabel value="Number of family members:" for="integrantesFamilia" />
+                            <h:outputText id="integrantesFamilia" value="#{crudFamiliasControlador.familia.integrantesFamilia}" title="IntegrantesFamilia" />
+                            <p:outputLabel value="Family District:" for="barrioFamilia" />
+                            <h:outputText id="barrioFamilia" value="#{crudFamiliasControlador.familia.barrioFamilia}" title="BarrioFamilia" />
+                            <p:outputLabel value="Direction :" for="direccionFamilia" />
+                            <h:outputText id="direccionFamilia" value="#{crudFamiliasControlador.familia.direccionFamilia}" title="DireccionFamilia" />
+                            <p:outputLabel value="City:" for="ciudadFamilia" />
+                            <h:outputText id="ciudadFamilia" value="#{crudFamiliasControlador.familia.ciudadFamilia}" title="CiudadFamilia" />
+                            <p:outputLabel value="FkProblematica:" for="fkProblematica" />
+                            <h:outputText id="fkProblematica" value="#{crudFamiliasControlador.familia.fkProblematica.problematica}" title="CiudadFamilia" />
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+
+            <ui:define name="content">
+
+                    <f:view>
+
+                        <h:form>
+                            <h2><h:outputText value="Registro de incidente" style="color: #FCD11F; font-family: 'Patrick Hand';"/></h2>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nombre Completo:" for="nombreUsuario" />
+                                <p:inputText id="nombreUsuario" value="#{casosControlador.casos.nombreUsuario}" title="NombreUsuario" />
+                                <p:outputLabel value="Email:" for="emailUsuario" />
+                                <p:inputText id="emailUsuario" value="#{casosControlador.casos.emailUsuario}" title="EmailUsuario" />
+                                <p:outputLabel value="Detalle del Problema:" for="detalleProblema" />
+                                <p:inputTextarea id="detalleProblema" value="#{casosControlador.casos.detalleProblema}" title="DetalleProblema"  rows="5" cols="30"  maxlength="200" autoResize="false" />
+                                <p:outputLabel value="Caso:" for="estadoCaso" />
+                                <h:selectOneMenu id="estadoCaso" value="#{casosControlador.casos.estadoCaso}" >
+                                    <f:selectItem itemValue="Registrado" itemLabel="Registrar"/>
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                            <h:commandButton id="btnRegistroIncidente" value="Enviar" title="Registro Caso" action="#{casosControlador.registrarCaso()}"></h:commandButton>
+                        </h:form>
+                    </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

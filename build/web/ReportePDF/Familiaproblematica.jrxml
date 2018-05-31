@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b014ff9-272c-4734-9076-538659b379b5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     familias.`Nombre_Cde_Familia` AS familias_Nombre_Cde_Familia,
+     familias.`Apellido_Cde_Familia` AS familias_Apellido_Cde_Familia,
+     familias.`Fecha_Visita` AS familias_Fecha_Visita,
+     familias.`Docum_Cde_Familia` AS familias_Docum_Cde_Familia,
+     familias.`Integrantes_Familia` AS familias_Integrantes_Familia,
+     familias.`Barrio_Familia` AS familias_Barrio_Familia,
+     familias.`ciudad_Familia` AS familias_ciudad_Familia,
+     problematicas.`Problematica` AS problematicas_Problematica,
+     problematicas.`Detalle_Problematica` AS problematicas_Detalle_Problematica
+FROM
+     `problematicas` problematicas INNER JOIN `familias` familias ON problematicas.`id_Problematica` = familias.`fk_Problematica`]]>
+	</queryString>
+	<field name="familias_Fecha_Visita" class="java.sql.Date"/>
+	<field name="familias_Docum_Cde_Familia" class="java.lang.String"/>
+	<field name="familias_Nombre_Cde_Familia" class="java.lang.String"/>
+	<field name="familias_Apellido_Cde_Familia" class="java.lang.String"/>
+	<field name="familias_Integrantes_Familia" class="java.lang.Integer"/>
+	<field name="familias_Barrio_Familia" class="java.lang.String"/>
+	<field name="familias_ciudad_Familia" class="java.lang.String"/>
+	<field name="problematicas_Problematica" class="java.lang.String"/>
+	<field name="problematicas_Detalle_Problematica" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="126" uuid="317d5e7a-205a-46e1-9ab5-b34375940974"/>
+				<imageExpression><![CDATA["Logotipo_Nuvi_Amarillo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="250" y="0" width="305" height="62" uuid="b2dd5da3-20fd-4590-bb5c-68e0bb410dea"/>
+				<textElement verticalAlignment="Middle">
+					<font size="28" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Familias y Problematicas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="376" y="62" width="41" height="22" uuid="f629100c-8bd3-40e0-9cb5-4ef8af2c0000"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Nuvi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="84" width="383" height="42" uuid="e3cc28a4-c0bb-4636-8e17-7df4236b1d74"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[En este Reporte podemos evindenciar  datos de la familia basicos y las problemasticas que se estan presentando frecuentemente.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="633" y="-73" width="219" height="209" uuid="bf11cb33-a0ae-4ae7-974e-2425daab7486"/>
+				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="0c71d7e7-a821-48e1-ba45-1cd5fee6ba54"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="89" height="15" forecolor="#736343" uuid="c7de453b-4862-4b6b-a268-017a87e40625"/>
+				<text><![CDATA[Fecha de Visita]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="89" y="0" width="89" height="15" forecolor="#736343" uuid="eee3065a-badc-424e-9dd7-70a78e09ab49"/>
+				<text><![CDATA[Doc de Familia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="178" y="0" width="89" height="15" forecolor="#736343" uuid="61555057-da3e-430a-ac4e-9725b9ef02d9"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="267" y="0" width="89" height="15" forecolor="#736343" uuid="0a8d4b58-8e05-41bb-9270-f8f077a88b6d"/>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="356" y="0" width="89" height="15" forecolor="#736343" uuid="25764854-52e4-435b-84a0-c8366aeb1cc8"/>
+				<text><![CDATA[Integrantes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="445" y="0" width="89" height="15" forecolor="#736343" uuid="57533b2f-d13e-4798-a84a-7364b6be1ac1"/>
+				<text><![CDATA[Barrio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="534" y="0" width="89" height="15" forecolor="#736343" uuid="57875866-55db-4f62-bfa8-4c371b0f3bdc"/>
+				<text><![CDATA[Ciudad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="623" y="0" width="89" height="15" forecolor="#736343" uuid="46d8db67-4f0a-4ec3-9d78-0a5d10b4a42e"/>
+				<text><![CDATA[Problematica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="712" y="0" width="89" height="15" forecolor="#736343" uuid="e824285b-1c40-4c54-8c52-c72db492f073"/>
+				<text><![CDATA[Detalles]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="6a190409-ac56-4594-8d3a-a462141d1bbc"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="89" height="15" uuid="b064fbd0-3fe5-4b15-b83d-c8df0d587acd"/>
+					<textFieldExpression><![CDATA[$F{familias_Fecha_Visita}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="89" y="0" width="89" height="15" uuid="6cad27c8-0b38-4f73-9448-8af35b54df1a"/>
+					<textFieldExpression><![CDATA[$F{familias_Docum_Cde_Familia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="178" y="0" width="89" height="15" uuid="42d9361a-4dfc-46c4-901e-8e33dac7a75a"/>
+					<textFieldExpression><![CDATA[$F{familias_Nombre_Cde_Familia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="267" y="0" width="89" height="15" uuid="c295b2c2-80a9-4427-82bf-b06eeb8419dd"/>
+					<textFieldExpression><![CDATA[$F{familias_Apellido_Cde_Familia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="356" y="0" width="89" height="15" uuid="0f6fe9a6-4eb2-4945-8b0a-3ff3fd6cab76"/>
+					<textFieldExpression><![CDATA[$F{familias_Integrantes_Familia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="445" y="0" width="89" height="15" uuid="63cc5e8f-7153-457c-9e77-620aadc83e41"/>
+					<textFieldExpression><![CDATA[$F{familias_Barrio_Familia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="534" y="0" width="89" height="15" uuid="300c27d8-fa12-44a2-8036-4cc777b9c1b4"/>
+					<textFieldExpression><![CDATA[$F{familias_ciudad_Familia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="623" y="0" width="89" height="15" uuid="386f0ef5-61af-44be-8831-7af6039e8e20"/>
+					<textFieldExpression><![CDATA[$F{problematicas_Problematica}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="712" y="0" width="89" height="15" uuid="96a74136-0775-4fd6-b5fc-d31bb35fe3a0"/>
+					<textFieldExpression><![CDATA[$F{problematicas_Detalle_Problematica}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="96" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="dbca567f-b850-4640-b160-17ccbcc202cd"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="81fe0e0b-0657-4308-bc1a-3f5f3dadd6dd"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="da48f569-84f1-4595-b3d1-b17470edfd20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="78c0c1a6-5d7e-4df5-bfe4-5fb1767bb9aa"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="910269ae-f37d-4a13-a976-ec81ac8e4db4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

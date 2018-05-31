@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Asignación de Incidentes"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="NombreUsuario:" for="nombreUsuario" />
+                            <h:outputText id="nombreUsuario" value="#{casosControlador.casos.nombreUsuario}" title="NombreUsuario" />
+                            <p:outputLabel value="EmailUsuario:" for="emailUsuario" />
+                            <h:outputText id="emailUsuario" value="#{casosControlador.casos.emailUsuario}" title="EmailUsuario" />
+                            <p:outputLabel value="DetalleProblema:" for="detalleProblema" />
+                            <h:outputText id="detalleProblema" value="#{casosControlador.casos.detalleProblema}" title="DetalleProblema" />
+                            <p:outputLabel value="EstadoCaso:" for="estadoCaso" />
+                            <h:selectOneMenu id="estadoCaso" value="#{casosControlador.casos.estadoCaso}">
+                                <f:selectItem itemValue="Asignado" itemLabel="Asignar Caso"/>
+                            </h:selectOneMenu>
+                            <p:outputLabel value="FkUsuario:" for="fkUsuario" />
+                            <h:selectOneMenu id="fkUsuario" value="#{casosControlador.usuario.idUsuario}" >
+                                <f:selectItem itemValue="" itemLabel="Equipo de Soporte"/>
+                                <f:selectItems value="#{usuarioscrudControlador.listarUsuarios()}" var="usuario" itemLabel="#{usuario.nombreUsuario}" itemValue="#{usuario.idUsuario}" />
+                            </h:selectOneMenu>
+                        </p:panelGrid>
+                        <h:commandButton id="btnAsginarCaso" value="Asignar " action="#{casosControlador.asignarCasoaTecnico()}" ></h:commandButton>
+                        <a href="ListaCasos.xhtml">Volver a la lista</a>
+                        
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

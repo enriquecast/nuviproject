@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+
+            <ui:define name="content">
+                <div class="app-title">
+
+                </div>
+
+                <div class="row">
+                    <h:form>
+                        <p:commandButton id="btnCalcular" value="Calcular" action="#{proyectosControlador.llamarCantidades()}" style="margin-left: 1000px" update="lblTotal" /><br></br>
+
+                        <div class="col-md-3 caja-tablero">
+                            <div class="col-md-8 titulo-caja-tablero">
+                                <h3>Creado</h3>
+                            </div>
+                            <div class="col-md-4 texto-caja-tablero">
+                                <h:outputText id="lblTotal" value="#{proyectosControlador.cuenta1}" style="font-size: 40px" ></h:outputText>
+                            </div>
+                        </div>
+                        <div class="col-md-3 caja-tablero">
+                            <div class="col-md-8 titulo-caja-tablero">
+                                <h3>En asignación</h3>
+                            </div>
+                            <div class="col-md-4 texto-caja-tablero">
+                                <h:outputText id="lblTotal2" value="#{proyectosControlador.cuenta2}" style="font-size: 40px" ></h:outputText>
+                            </div>
+                        </div>
+                        <div class="col-md-3 caja-tablero">
+                            <div class="col-md-8 titulo-caja-tablero">
+                                <h3>Asignado</h3>
+                            </div>
+                            <div class="col-md-4 texto-caja-tablero">
+                                <h:outputText id="lblTotal3" value="#{proyectosControlador.cuenta3}" style="font-size: 40px" ></h:outputText>
+                            </div>
+                        </div>
+                        <div class="col-md-3 caja-tablero">
+                            <div class="col-md-8 titulo-caja-tablero">
+                                <h3>Cerrado</h3>
+                            </div>
+                            <div class="col-md-4 texto-caja-tablero">
+                                <h:outputText id="lblTotal4" value="#{proyectosControlador.cuenta4}" style="font-size: 40px" ></h:outputText>                        </div>
+                        </div>
+                        <div class="col-md-3 caja-tablero">
+                            <div class="col-md-8 titulo-caja-tablero">
+                                <h3>Seguimiento</h3>
+                            </div>
+                            <div class="col-md-4 texto-caja-tablero">
+                                <h:outputText id="lblTotal5" value="#{proyectosControlador.cuenta5}" style="font-size: 40px" ></h:outputText>                        </div>
+                        </div>
+                    </h:form>
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
